@@ -16,3 +16,42 @@ write(to_file)
 
 ```
 
+
+## リストの間にblank(空欄)を入れる関数
+
+```
+def insert_blank(line):
+    line_with_blank = []
+    length = len(line)
+    for word in line:
+        if word != "\n":
+            line_with_blank.append(word)
+            line_with_blank.append(" ")
+        else:
+            line_with_blank.append(word)
+    
+    return line_with_blank
+```
+
+## 実行時間を表示
+```
+import time
+start = time.time()
+
+elapsed_time = time.time() - start
+
+print("elapsed_time:{0}".format(elapsed_time)+"[sec]")
+```
+
+## デバッグ
+
+```
+import pdb
+pdb.set_trace()
+```
+
+## 辞書でも使えるenumerate
+```
+for i key in enumerate(dict):
+```
+
