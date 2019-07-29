@@ -55,3 +55,19 @@ pdb.set_trace()
 for i key in enumerate(dict):
 ```
 
+## pickleにして保存する
+```
+import pickle
+L = ['未経験転職', 'Pythonで人工知能エンジニア', 123456, {'Pyhon': '機械学習'}]
+with open('*.textfile', 'wb') as f:
+  pickle.dump(L , f)
+```
+
+
+## pickleにして保存したものを読み込む
+```
+import pickle
+with open('*.textfile', 'rb') as f:
+  target = pickle.load(f)
+  print(target)
+```
