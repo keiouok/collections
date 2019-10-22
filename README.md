@@ -96,6 +96,12 @@ with open('*.textfile', 'rb') as f:
 
 包む，最後に両手の親指でギュっとする．
 
+## 夜：冷麺
+麺   4分ゆでる
+きゅうり    あの切り方で切る．切るときは上下に力を入れて小刻みに．今日よりもっと薄く切れるように．
+トマト	
+
+
 
 
 
@@ -110,8 +116,12 @@ with open('*.textfile', 'rb') as f:
 # aiserv
 # LDAP
 LDAPを通した後に
+
+```
 sudo apt update
-sudo apt upgradeすると
+sudo apt upgrade
+```
+すると，LDAP入れた後にぶっ壊れなかった．
 
 
 
