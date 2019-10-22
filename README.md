@@ -124,9 +124,13 @@ export PATH="$PYENV_ROOT/versions/anaconda3-2019.10/bin:$PATH"
 ```
 sudo sh /etc/profile.d/pyenv.sh
 ```
+いったんシェルを再起動する．
+```
+exec $SHELL -l
 
-これでパスを通せたはずなので，個人のパソコンからsshでアクセスした際にpyenvがない，というエラーメッセージが大量に発生しない，もしくは，
+```
 
+再度ターミナルを起動した際に，
 ```
 pyenv versions
 ```
@@ -136,28 +140,35 @@ pyenv versions
 ```
 pyenv --version
 ```
-などと打ってpyenvが起動すればOK．通したつもりでもパスが通ってないといわれた場合は，再度確認，もしくは，シェルを再起動したりrebootをかけてみるとできたりする．
+などと打ってpyenvが起動すればOK．通したつもりでもパスが通ってないといわれた場合は，再度確認，もしくは，シェルを再起動したりrebootをかけてみる．個人のパソコンからsshでアクセスした際にエラーメッセージ発生するか同時に見てみてもよい．
 
 
+# anaconda(Python)の導入
+pyenvでインストールできるanacondaのパッケージを確認する．
 
+```
+pyenv instal -l | grep anaconda
+```
 
+その中で最新のパッケージを導入する．例では，anaconda3-2019.10．
+(anacondaなので数分時間がかかる)
 
+```
+pyenv install anaconda3-2019.10
+pyenv global anaconda3-2019.10
 
+```
+Pythonが動くか確認する
+```
+python --version
+```
+と入力した際に，
 
+```
+Python 3.7.4
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+などと出ればOK.
 
 
 
