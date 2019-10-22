@@ -71,3 +71,93 @@ with open('*.textfile', 'rb') as f:
   target = pickle.load(f)
   print(target)
 ```
+
+# aiserv
+
+pyenvとanacondaの導入の所が古いようなので，今回やった内容に即して追加記入します．思い出しながら書いているので，間違いや追加事項あれば適宜訂正をお願いします(胡)．
+ちなみに，導入の際のコマンドのほとんどは，sudoを必要としました．
+
+## pyenvの導入
+LDAPを通すと，/home/の下にaiの他にsettingができるはずなので，
+/home/setting/に移動し，setting下でpyenvとanacondaを導入する．
+ssh setting@aiserv.sspnetで飛んでからやると，管理者権限に引っ掛かり，sudoを付けても導入ができないっぽい(?)ので，基本的にuser_name<ai,ironなど>から見て，/home/setting/で導入を行う．
+
+以下内容の参考文献：https://qiita.com/aical/items/126128c3e8916ad1988f
+
+まず，pyenv環境を設定する．
+
+以下コマンドを実行する．
+```
+sudo curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+```
+実行したら，/home/setting/下に/home/setting/.pyenvが存在しているか確認すること．存在していなければ，/home/user_name/の下にできてしまっていることがあるので，丸ごと/home/setting/下に移動してくればよい．
+```
+sudo mv /home/user_name/.pyenv /home/user_name/.pyenv
+
+```
+
+
+コマンドを実行すると以下のような警告が出てくる．
+
+```
+WARNING: seems you still have not added 'pyenv' to the load path.
+
+# Load pyenv automatically by adding
+# the following to ~/.bashrc:
+
+export PATH="/home/user_name/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+```
+参考文献のように，個人のパソコンにpyenvを導入する場合は/home/user_name/.bashrcに直接以下の内容を書き込むが，今回はみんなが使うサーバーなので，/etc/profile.d/にpyenv.shを新規作成し，そこに書き込む．参考文献で言われた書き方ではなく(virtualenv-initは導入不要，導入してない上で呼び出されるとterminal上でエラーメッセージが出てきてしまうため)，以下の内容を/etc/profile.d/pyenv.shに書き込む．anaconda3-2019.10の部分は，今からやるanacondaの導入で得られたパッケージ名を入力すること(ver.は最新のものが望ましい) ．
+
+```
+export PYENV_ROOT="/home/setting/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PATH="$PYENV_ROOT/versions/anaconda3-2019.10/bin:$PATH"
+
+```
+
+できたシェルファイルを実行し，パスを通す．
+
+```
+sudo sh /etc/profile.d/pyenv.sh
+```
+
+これでパスを通せたはずなので，個人のパソコンからsshでアクセスした際にpyenvがない，というエラーメッセージが大量に発生しない，もしくは，
+
+```
+pyenv versions
+```
+
+や
+
+```
+pyenv --version
+```
+などと打ってpyenvが起動すればOK．通したつもりでもパスが通ってないといわれた場合は，再度確認，もしくは，シェルを再起動したりrebootをかけてみるとできたりする．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
