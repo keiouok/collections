@@ -71,4 +71,44 @@ with open('*.textfile', 'rb') as f:
   target = pickle.load(f)
   print(target)
 ```
+## cos_similarity
+```
+def cos_sim(v1, v2):    
+    c_s = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+    # if c_s <= 0.3:
+    #     return 0
+    # else:
+    return c_s
+```
+
+## 文を受け取って言い換えた文候補のリストを返す関数
+```
+def para_sent(low_word, low_high_dict, sentence):
+	# sentenceのどこにwordがあるのかのindexを作成
+	# 言い換えるべきlow_word
+	# sentenceは一文を入力とする
+	kouho_thre = 20
+	sentence_kouho_list = []
+	# default 原文も含む状態
+	sentence_kouho_list.append(sentence)
+	word_index_in_sent = []
+
+	for i in range(len(sentence)):
+		if sentence[i] == low_word:
+			word_index_in_sent.append(i)
+	high_word_list = low_high_dict[low_word]
+	high_word_list = high_word_list[:kouho_thre]
+	for high_word in high_word_list:
+		n_sentence = []
+		for j in range(len(sentence)):
+			if j not in word_index_in_sent: 
+				n_sentence.append(sentence[j])
+			else: # if j in word_index_in_sent
+				n_sentence.append(high_word)
+		sentence_kouho_list.append(n_sentence)
+	
+	return sentence_kouho_list
+```
+
+
 
