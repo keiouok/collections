@@ -140,7 +140,17 @@ poem.endswith("All")
 ## ついついWindows上で一般的なファイル保存のショートカット（「Ctrl」＋「S」キー）に手が伸びてしまい、キー入力がまったく受け付けられなくなってしまった。これは、Linuxのコンソール上で「Ctrl」＋「S」キーを押すとターミナルへの出力がロックされるためだ。この場合には、焦らずに「Ctrl」＋「Q」キーを押せば解除される。混乱を避けるためにこの機能そのものを無効にさせたい場合、次のように指定しよう。
 
 
-
+## 素数列挙 O(NloglogN) (by tonnnura)
+```
+def primes_for(n):
+  is_prime = [True] * (n + 1)
+  is_prime[0] = False
+  is_prime[1] = False
+  for i in range(2, n + 1):
+      for j in range(i * 2, n + 1, i):
+          is_prime[j] = False
+  return [i for i in range(n + 1) if is_prime[i]]
+```
 
 
 
