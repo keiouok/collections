@@ -12,7 +12,6 @@ def write(filename):
     if not os.path.exists(file_path):
         os.makedirs(file_path)
 
-write(to_file)
 
 ```
 
@@ -172,9 +171,19 @@ def dijkstra(E, start):
 E は 連結リスト(多分)
 startは始点
 
+## テキストファイル結合
+```
+cat file1.txt file2.txt > newfile.txt
+```
+上記のLinuxコマンドを実行すると、file1のあとにfile2の内容が追加されたnewfileというファイルが完成します。追加するファイルの指定では、ワイルドカードも使うことができます。
 
+``` 
+cat file2.txt >> file1.txt
+```
+これで、file1の末尾にfile2の文字列が追加されます。>ひとつのリダイレクションでは、元となるファイルと、作成するファイルに同じファイルを指定することができないので、>>が必要になる場面もでてくるはずです。
 
-
-
-
-
+## 空行を削除するvim
+```
+ :v/./d
+ :g/^$/d
+```
