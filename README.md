@@ -171,6 +171,11 @@ def dijkstra(E, start):
 E は 連結リスト(多分)
 startは始点
 
+E[a].append(b, c)
+
+
+意味するのは，「a番目のノードがbと繋がっており，コストはc」
+これが連結リスト．
 ## テキストファイル結合
 ```
 cat file1.txt file2.txt > newfile.txt
