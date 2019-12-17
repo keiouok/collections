@@ -1,6 +1,13 @@
 # collections
 よく使いそうなやつこれくしょん．
 
+## texコンパイル(tex.sh)
+
+```
+platex *.tex                                         
+dvipdfmx *
+evince *.pdf
+```
 
 ## ファイルの前にディレクトリがなければ作成する関数
 
