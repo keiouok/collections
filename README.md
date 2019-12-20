@@ -199,3 +199,5 @@ cat file2.txt >> file1.txt
  :v/./d
  :g/^$/d
 ```
+
+## ctrl+s <-> ctrl+q
