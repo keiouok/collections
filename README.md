@@ -201,3 +201,19 @@ cat file2.txt >> file1.txt
 ```
 
 ## ctrl+s <-> ctrl+q
+
+def load_pickle(file_path):
+    with open(file_path, "rb") as f:
+        obj = pickle.load(f)
+        return obj
+  
+def save_pickle(file_path, obj):
+ 20     with open(file_path, "wb") as f:
+ 21         pickle.dump(obj, f)
+ 22  
+ 23 def str_sent_to_list(str_sent):
+ 24     # str_sent = "ほぼ 無関係 です \n"
+ 25     str_sent = str_sent.strip()
+ 26     str_sent_list = str_sent.split()
+ 27     print(str_sent_list)
+ 28  
