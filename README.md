@@ -142,11 +142,7 @@ letter[::-1]
 poem.startswith("All")
 poem.endswith("All")
 ```
-
-## ついついWindows上で一般的なファイル保存のショートカット（「Ctrl」＋「S」キー）に手が伸びてしまい、キー入力がまったく受け付けられなくなってしまった。これは、Linuxのコンソール上で「Ctrl」＋「S」キーを押すとターミナルへの出力がロックされるためだ。この場合には、焦らずに「Ctrl」＋「Q」キーを押せば解除される。混乱を避けるためにこの機能そのものを無効にさせたい場合、次のように指定しよう。
-
-
-## 素数列挙 O(NloglogN) (by tonnnura)
+## 素数列挙 O(NloglogN) (by tonnn*)
 ```
 def primes_for(n):
   is_prime = [True] * (n + 1)
@@ -157,7 +153,7 @@ def primes_for(n):
           is_prime[j] = False
   return [i for i in range(n + 1) if is_prime[i]]
 ```
-## ABC035D ダイクストラ法
+## ダイクストラ法
 ```
 def dijkstra(E, start):
     N_d = len(E)
@@ -180,19 +176,18 @@ startは始点
 
 E[a].append(b, c)
 
-
 意味するのは，「a番目のノードがbと繋がっており，コストはc」
 これが連結リスト．すべてのノードからダイクストラを求める必要はない．0スタートを逆順にすればよいだけ．大事．
 ## テキストファイル結合
 ```
 cat file1.txt file2.txt > newfile.txt
 ```
-上記のLinuxコマンドを実行すると、file1のあとにfile2の内容が追加されたnewfileというファイルが完成します。追加するファイルの指定では、ワイルドカードも使うことができます。
+上記のLinuxコマンドを実行すると、file1のあとにfile2の内容が追加されたnewfileというファイルが完成。追加するファイルの指定では、ワイルドカードも使える。
 
 ``` 
 cat file2.txt >> file1.txt
 ```
-これで、file1の末尾にfile2の文字列が追加されます。>ひとつのリダイレクションでは、元となるファイルと、作成するファイルに同じファイルを指定することができないので、>>が必要になる場面もでてくるはずです。
+これで、file1の末尾にfile2の文字列が追加される。>ひとつのリダイレクションでは、元となるファイルと、作成するファイルに同じファイルを指定することができないので、>>が必要になる場面もでてくる。
 
 ## 空行を削除するvim
 ```
@@ -200,197 +195,17 @@ cat file2.txt >> file1.txt
  :g/^$/d
 ```
 
-## ctrl+s <-> ctrl+q
+## ctrl+s <-> ctrl+q 
+vimで癖でctrl+S押したら，ctrl+Qすべし．
 
+## pickle の保存と読み込み
+```
 def load_pickle(file_path):
     with open(file_path, "rb") as f:
         obj = pickle.load(f)
         return obj
   
 def save_pickle(file_path, obj):
- 20     with open(file_path, "wb") as f:
- 21         pickle.dump(obj, f)
- 22  
- 23 def str_sent_to_list(str_sent):
- 24     # str_sent = "ほぼ 無関係 です \n"
- 25     str_sent = str_sent.strip()
- 26     str_sent_list = str_sent.split()
- 27     print(str_sent_list)
- 28  
-
-
-
-
-
-
-
-
-
-syntax on
-"colorscheme molokai"
-colorscheme molokai
-"colorscheme industry"
-""colorscheme torte
-
-"yank save on clickboard"
-
-set clipboard=unnamedplus
-
-set t_Co=256
-
-" setting
-"文字コードをUFT-8に設定
-set fenc=utf-8
-" バックアップファイルを作らない
-set nobackup
-" スワップファイルを作らない
-set noswapfile
-" 編集中のファイルが変更されたら自動で読み直す
-set autoread
-" バッファが編集中でもその他のファイルを開けるように
-set hidden
-" 入力中のコマンドをステータスに表示する
-set showcmd
-
-
-" 見た目系
-" 行番号を表示
-set number
-" 現在の行を強調表示
-set cursorline
-" 現在の行を強調表示（縦）
-set cursorcolumn
-" 行末の1文字先までカーソルを移動できるように
-set virtualedit=onemore
-" インデントはスマートインデント
-set smartindent
-" ビープ音を可視化
-set visualbell
-" 括弧入力時の対応する括弧を表示
-set showmatch
-" ステータスラインを常に表示
-set laststatus=2
-" コマンドラインの補完
-set wildmode=list:longest
-" 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
-" シンタックスハイライトの有効化
-syntax enable
-
-
-" Tab系
-" 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
-" Tab文字を半角スペースにする
-set expandtab
-" 行頭以外のTab文字の表示幅（スペースいくつ分）
-set tabstop=4
-" 行頭でのTab文字の表示幅
-set shiftwidth=4
-
-" 検索系
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
-set ignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索する
-set smartcase
-" 検索文字列入力時に順次対象文字列にヒットさせる
-set incsearch
-" 検索時に最後まで行ったら最初に戻る
-set wrapscan
-" 検索語をハイライト表示
-set hlsearch
-" ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-
-"https://teratail.com/questions/124520"
-"{}片方消したらもう片方も消したい"
-
-
-noremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-
-augroup vimrcEx
-  autocmd!
-    autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line('$') |
-            \   exe "normal! g`\"" |
-                \ endif
-                augroup END
-
-autocmd FileType python setl autoindent
-autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
-
-inoremap jj <Esc>
-
-
-"https://qiita.com/ahiruman5/items/4f3c845500c172a02935"
-set wildmenu " コマンドモードの補完
-set history=5000 " 保存するコマンド履歴の数
-
-"mouse"
-if has('mouse')
-    set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
-endif
-
-if &term =~ "xterm"
-    let &t_SI .= "\e[?2004h"
-    let &t_EI .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
-
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
-
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
-
-"https://sy-base.com/myrobotics/vim/vim-transparent/"
-"highlight Normal ctermbg=none"
-"highlight NonText ctermbg=none"
-"highlight LineNr ctermbg=none"
-"highlight Folded ctermbg=none"
-"highlight EndOfBuffer ctermbg=none"
-
-
-
-
-
-"from yamamoto"
-"fzf setting 
-
-""set rtp+=~/.fzf
-""
-""" [START] Vundle.vim
-""set nocompatible              " be iMproved, required
-""filetype off                  " required
-""set rtp+=~/.vim/bundle/Vundle.vim
-""call vundle#begin()
-""set clipboard=unnamed 
-""
-""Plugin 'scrooloose/syntastic'
-""Plugin 'valloric/youcompleteme'
-""Plugin 'altercation/vim-colors-solarized'
-""Plugin 'vim-airline/vim-airline'
-""Plugin 'tpope/vim-surround'
-""Plugin 'junegunn/fzf.vim'
-""Plugin 'tpope/vim-eunuch'
-""
-""call vundle#end()            " required
-""filetype plugin indent on    " required
-""" [END] Vundle.vim
+    with open(file_path, "wb") as f:
+        pickle.dump(obj, f)
+```
